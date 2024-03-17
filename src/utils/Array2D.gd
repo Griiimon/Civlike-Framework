@@ -24,7 +24,7 @@ func serialize(callable= null)-> Dictionary:
 
 	return {"width": width, "height": height, "default_value": default_value, "arr": tmp_arr}
 	
-static func deserialize(dict: Dictionary, callable= null):
+static func deserialize(dict: Dictionary):
 	var ret= Array2D.new(dict.width, dict.height, dict.default_value)
 	ret.arr= dict.arr
 	return ret
