@@ -1,0 +1,21 @@
+[gd_scene load_steps=2 format=3 uid="uid://cruw07o3gci0d"]
+
+[ext_resource type="Script" path="res://src/game.gd" id="1_0bwo1"]
+
+[node name="Game2D" type="Node"]
+script = ExtResource("1_0bwo1")
+game_dir = "res://civ2 clone"
+
+[node name="World" type="Node" parent="."]
+
+[node name="TileMap" type="TileMap" parent="World"]
+format = 2
+layer_0/name = "Terrain"
+
+[node name="Units" type="Node" parent="World"]
+
+[node name="Player" type="Node" parent="World/Units"]
+
+[node name="MapUnitStack" type="Sprite2D" parent="World/Units/Player"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
