@@ -1,0 +1,11 @@
+{
+	"layer_1" : {
+		
+		"noise": "none",
+	},
+
+	"algorithm": {
+		"set_type": "grass"
+	}
+
+}

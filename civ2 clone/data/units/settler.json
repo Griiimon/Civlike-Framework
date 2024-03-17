@@ -2,6 +2,7 @@
 	"category": "pop",
 	"sub_category": "settler", 
 	"cost": 50,
-	"strength": 1,
-	"extra_actions": [ "settle" ] 
+	"strength": 2,
+	"extra_actions": [ "settle" ] ,
+	"movement": 2
 }

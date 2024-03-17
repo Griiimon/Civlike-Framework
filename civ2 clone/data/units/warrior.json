@@ -2,5 +2,6 @@
 	"category": "military",
 	"sub_category": "melee", 
 	"cost": 20,
-	"strength": 2 
+	"strength": 1,
+	"movement": 1
 }
