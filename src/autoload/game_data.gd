@@ -6,12 +6,12 @@ var data_dir: String
 var terrains: Array[TerrainData]
 
 
-func _ready():
-	load_data()
-
-func load_data():
-	assets_dir= ProjectSettings.globalize_path("res://civ4 clone/assets/")
-	data_dir= assets_dir + "data/"
+func load_data(game_dir: String):
+	game_dir= ProjectSettings.globalize_path(game_dir)
+	assets_dir= game_dir + "/assets/"
+	data_dir= game_dir + "/data/"
+	prints("Assets", assets_dir)
+	prints("Data", data_dir)
 	
 	terrains.assign(TerrainData.parse_data_folder(data_dir + "terrain", TerrainData.new().get_script()))
 

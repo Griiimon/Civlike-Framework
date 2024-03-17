@@ -148,16 +148,16 @@ static func bool_from_string(s: String)-> Array2D:
 	else:
 		str_arr= s.split("\n")
 		
-	var width= 0
-	var height= str_arr.size()
+	var new_width= 0
+	var new_height= str_arr.size()
 	for line in str_arr:
-		width= max(width, line.length())
+		new_width= max(new_width, line.length())
 	
-	var result= Array2D.new(width, height, false)
+	var result= Array2D.new(new_width, new_height, false)
 
-	for y in height:
+	for y in new_height:
 		var line= str_arr[y]
-		for x in width:
+		for x in new_width:
 			var c= line[x]
 			result.put(x, y, true if (c == "1" or c.to_upper() == "X") else false)
 

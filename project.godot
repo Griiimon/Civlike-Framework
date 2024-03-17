@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Civlike Framework"
-run/main_scene="res://empty.tscn"
+run/main_scene="res://game.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -23,3 +23,4 @@ GameData="*res://src/autoload/game_data.gd"
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
