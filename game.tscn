@@ -1,8 +1,21 @@
-[gd_scene load_steps=4 format=3 uid="uid://chq04u17hdh5y"]
+[gd_scene load_steps=8 format=3 uid="uid://chq04u17hdh5y"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_lyfb6"]
 [ext_resource type="Script" path="res://src/world/world.gd" id="2_rjof3"]
 [ext_resource type="PackedScene" uid="uid://j6xxta5qfsd" path="res://scenes/map/flat_tile.tscn" id="3_m1efa"]
+[ext_resource type="Texture2D" uid="uid://boe7o3jleeuqc" path="res://textures/grid.png" id="4_2nqph"]
+[ext_resource type="Script" path="res://src/map/camera.gd" id="4_q4wvn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxysi"]
+transparency = 1
+no_depth_test = true
+albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
+albedo_texture = ExtResource("4_2nqph")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_0wm2y"]
+material = SubResource("StandardMaterial3D_nxysi")
+size = Vector2(10, 10)
 
 [node name="Game" type="Node"]
 script = ExtResource("1_lyfb6")
@@ -14,9 +27,14 @@ flat_tile_scene = ExtResource("3_m1efa")
 
 [node name="Flat" type="Node3D" parent="World"]
 
+[node name="Grid" type="MeshInstance3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.775, 0)
+mesh = SubResource("PlaneMesh_0wm2y")
+
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 5, 0)
 current = true
+script = ExtResource("4_q4wvn")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 6, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 6, 0)
