@@ -7,6 +7,7 @@ class_name World
 @export var flat_tile_scene: PackedScene
 
 @onready var flat_map = $Flat
+@onready var grid = $Grid
 
 
 var tiles: Array2D
@@ -24,15 +25,16 @@ func generate_flat():
 	if not tiles:
 		generate_default_tiles()
 	
-	flat_render_tiles= Array2D.new(tiles.width, tiles.height)
+	flat_render_tiles= Array2D.new(width, height)
 
-	for x in tiles.width:
-		for y in tiles.height:
+	for x in width:
+		for y in height:
 			var tile: FlatTile= flat_tile_scene.instantiate()
 			tile.position= Vector3(x, 0, y)
 			flat_map.add_child(tile)
 			tile.set_material(tiles.read(x, y).flat_material)
-			
+	
+	generate_grid()
 
 
 func generate_default_tiles():
@@ -42,3 +44,9 @@ func generate_default_tiles():
 	for x in width:
 		for y in height:
 			tiles.put(x, y, GameData.terrains[0])
+
+
+func generate_grid():
+	grid.position= Vector3(width, 0, height) / 2
+	var material: StandardMaterial3D= grid.mesh.material
+	material.uv1_scale= Vector3(width, 0, height)
