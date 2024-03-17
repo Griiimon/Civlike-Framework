@@ -11,7 +11,6 @@ transparency = 1
 no_depth_test = true
 albedo_color = Color(0.203922, 0.203922, 0.203922, 1)
 albedo_texture = ExtResource("4_2nqph")
-uv1_scale = Vector3(10, 10, 10)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_0wm2y"]
 material = SubResource("StandardMaterial3D_nxysi")
@@ -28,7 +27,6 @@ flat_tile_scene = ExtResource("3_m1efa")
 [node name="Flat" type="Node3D" parent="World"]
 
 [node name="Grid" type="MeshInstance3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.775, 0)
 mesh = SubResource("PlaneMesh_0wm2y")
 
 [node name="Camera3D" type="Camera3D" parent="."]

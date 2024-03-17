@@ -47,6 +47,6 @@ func generate_default_tiles():
 
 
 func generate_grid():
-	grid.position= Vector3(width, 0, height) / 2
-	var material: StandardMaterial3D= grid.mesh.material
-	material.uv1_scale= Vector3(width, 0, height)
+	grid.position= (Vector3(width, 0, height) - Vector3(1, 0, 1))  / 2 
+	grid.mesh.size= Vector2(width, height)
+	grid.mesh.material.uv1_scale= Vector3(width, height, 1)
