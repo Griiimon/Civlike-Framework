@@ -1,0 +1,7 @@
+{
+	"category": "pop",
+	"sub_category": "settler", 
+	"cost": 50,
+	"strength": 1,
+	"extra_actions": [ "settle" ] 
+}

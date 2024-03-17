@@ -11,8 +11,13 @@ config_version=5
 [application]
 
 config/name="Civlike Framework"
+run/main_scene="res://empty.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GameData="*res://src/autoload/game_data.gd"
 
 [rendering]
 
