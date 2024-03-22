@@ -9,5 +9,5 @@ var texture: Texture2D
 var movement: int
 var strength: int
 
-func load_custom_data():
+func load_custom_data(_data: Dictionary):
 	texture= GameData.load_texture("units/" + name)

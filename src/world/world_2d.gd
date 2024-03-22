@@ -5,6 +5,7 @@ class_name MyWorld2D
 
 
 func init():
+	super()
 	create_tileset()
 
 func render_surface(_surface: WorldSurface):
@@ -19,6 +20,7 @@ func create_tileset():
 	var image= Image.create(128, 128, false, Image.FORMAT_RGB8)
 
 	for terrain in GameData.terrains:
+		assert(terrain.flat_texture)
 		var src: Image= terrain.flat_texture.get_image()
 		prints("Image format", src.data.format)
 		image.blit_rect(src, Rect2i(Vector2i.ZERO, Vector2.ONE * 128), Vector2i.ZERO)
