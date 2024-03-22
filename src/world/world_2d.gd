@@ -12,7 +12,7 @@ func render_surface(_surface: WorldSurface):
 	for x in _surface.width:
 		for y in _surface.height:
 			var pos:= Vector2i(x, y)
-			tilemap.set_cell(_surface.tiles.readv(pos), pos, 0, Vector2i.ZERO)
+			tilemap.set_cell(GameData.terrains.find(_surface.tiles.readv(pos)), pos, 0, Vector2i.ZERO)
 
 
 

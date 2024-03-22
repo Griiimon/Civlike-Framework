@@ -40,4 +40,21 @@ func build_data_dict(target_dictionary: Dictionary, source_array: Array):
 
 
 func load_texture(path: String)-> Texture2D:
-	return load(assets_dir + "textures/" + path + ".png")
+	#return ResourceLoader.load(assets_dir + "textures/" + path + ".png")
+
+	path= assets_dir + "textures/" + path + ".png"
+	var file = FileAccess.open(path, FileAccess.READ) 
+	
+	if FileAccess.get_open_error() != OK:
+		push_error(str("File open error ", FileAccess.get_open_error(), " ", path))
+		return null
+
+	var fsize = file.get_length()
+	var data = file.get_buffer(fsize)
+	file.close()
+
+	var image = Image.new()
+	image.load_png_from_buffer(data)
+
+	return ImageTexture.create_from_image(image)
+
