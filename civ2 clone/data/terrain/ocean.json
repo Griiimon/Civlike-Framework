@@ -1,0 +1,9 @@
+{
+	"move_cost": 1.0,
+	"terrain_type": "water",
+	"tile_properties": {
+		"food": 1,
+		"production": 0,
+		"trade": 2
+	}
+}

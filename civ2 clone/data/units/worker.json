@@ -1,0 +1,8 @@
+{
+	"category": "pop",
+	"sub_category": "worker", 
+	"cost": 20,
+	"strength": 0,
+	"extra_actions": [ "irrigate" ] ,
+	"movement": 1
+}

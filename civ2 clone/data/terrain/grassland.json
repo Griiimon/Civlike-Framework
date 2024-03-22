@@ -1,0 +1,9 @@
+{
+	"move_cost": 1.0,
+	"terrain_type": "land",
+	"properties": {
+		"food": 2,
+		"production": 0,
+		"trade": 0
+	}
+}

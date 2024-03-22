@@ -1,0 +1,6 @@
+{
+	"whitelist_terrain": [ "mountains" ],
+	"property_modifiers": {
+		"production": 3
+	}
+}

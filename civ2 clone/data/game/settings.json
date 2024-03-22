@@ -1,0 +1,7 @@
+{
+	"render": "2d",
+	"tilemap": "square",
+	"unit_stacking": false,
+	"incremental_tech_cost": true,
+	"save_individual_tech_progress": false
+}
