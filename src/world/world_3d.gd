@@ -10,8 +10,7 @@ var flat_render_tiles: Array2D
 
 
 func generate_flat():
-	if not tiles:
-		generate_default_tiles()
+	super()
 	
 	flat_render_tiles= Array2D.new(width, height)
 

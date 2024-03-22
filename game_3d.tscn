@@ -23,6 +23,8 @@ game_dir = "res://civ2 clone"
 [node name="World" type="Node" parent="."]
 script = ExtResource("2_g2ni3")
 flat_tile_scene = ExtResource("3_m1efa")
+width = null
+height = null
 
 [node name="Flat" type="Node3D" parent="World"]
 

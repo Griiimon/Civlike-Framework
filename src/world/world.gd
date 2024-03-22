@@ -9,12 +9,16 @@ var tiles: Array2D
 
 
 
-func _init():
+func init():
 	pass
-
+	
 func tick():
 	pass
 
+
+func generate_flat():
+	if not tiles:
+		generate_default_tiles()
 
 
 func generate_default_tiles():

@@ -7,5 +7,9 @@ class_name Game
 
 func _ready():
 	GameData.load_data(game_dir)
+	
+	world.init()
+	late_ready.call_deferred()
 
+func late_ready():
 	world.generate_flat()

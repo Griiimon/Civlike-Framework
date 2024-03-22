@@ -1,14 +1,20 @@
-[gd_scene load_steps=2 format=3 uid="uid://cruw07o3gci0d"]
+[gd_scene load_steps=4 format=3 uid="uid://cruw07o3gci0d"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_0bwo1"]
+[ext_resource type="Script" path="res://src/world/world_2d.gd" id="2_74h38"]
+
+[sub_resource type="TileSet" id="TileSet_81d4d"]
+tile_size = Vector2i(128, 128)
 
 [node name="Game2D" type="Node"]
 script = ExtResource("1_0bwo1")
 game_dir = "res://civ2 clone"
 
 [node name="World" type="Node" parent="."]
+script = ExtResource("2_74h38")
 
 [node name="TileMap" type="TileMap" parent="World"]
+tile_set = SubResource("TileSet_81d4d")
 format = 2
 layer_0/name = "Terrain"
 
