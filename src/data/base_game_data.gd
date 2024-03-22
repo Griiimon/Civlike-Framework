@@ -1,7 +1,7 @@
 class_name BaseGameData
 
 var name: String
-
+var raw_data: Dictionary
 
 static func parse_data_folder(path: String, script: Script)-> Array:
 	var result:= []
@@ -23,16 +23,20 @@ static func parse_data_folder(path: String, script: Script)-> Array:
 					continue
 
 				var data: Dictionary= json.data
-				print(data)
-				print()
+				#print(data)
+				#print()
 				
 				var obj= script.new()
+				
 				obj.name= file_name.split(".")[0]
+				obj.raw_data= data
+				
 				for key in data.keys():
 					if key in obj:
-						obj.set(key, data[key])
+						if not obj.is_key_handled_customly(key):
+							obj.set(key, data[key])
 				
-				obj.load_custom_data()
+				obj.load_custom_data(data)
 				
 				result.append(obj)
 				
@@ -44,5 +48,9 @@ static func parse_data_folder(path: String, script: Script)-> Array:
 	return result
 
 
-func load_custom_data():
+
+func load_custom_data(data: Dictionary):
 	pass
+
+func is_key_handled_customly(key: String)-> bool:
+	return false
