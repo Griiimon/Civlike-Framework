@@ -1,0 +1,6 @@
+{
+	"build_with": "production",
+	"can_attack": false,
+	"can_defend": false,
+	"can_be_captured": false
+}

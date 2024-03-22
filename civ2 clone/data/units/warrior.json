@@ -1,6 +1,5 @@
 {
-	"category": "military",
-	"sub_category": "melee", 
+	"tags": [ "military", "land" ],
 	"cost": 20,
 	"strength": 1,
 	"movement": 1

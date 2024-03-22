@@ -1,6 +1,5 @@
 {
-	"category": "pop",
-	"sub_category": "settler", 
+	"tags": [ "pop", "land" ],
 	"cost": 50,
 	"strength": 2,
 	"extra_actions": [ "settle" ] ,
