@@ -15,10 +15,13 @@ func tick():
 
 
 func generate_flat():
-	if surfaces[0].is_empty():
-		surfaces[0].generate_default_tiles()
+	if get_main_surface().is_empty():
+		get_main_surface().generate_default_tiles()
 	
-	render_surface(surfaces[0])
+	render_surface(get_main_surface())
 
 func render_surface(_surface: WorldSurface):
 	pass
+
+func get_main_surface()-> WorldSurface:
+	return surfaces[0]

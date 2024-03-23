@@ -22,7 +22,8 @@ func create_tileset():
 	for terrain in GameData.terrains:
 		assert(terrain.flat_texture)
 		var src: Image= terrain.flat_texture.get_image()
-		prints("Image format", src.data.format)
+		#prints("Image format", src.data.format)
+		assert(src.data.format == "RGB8")
 		image.blit_rect(src, Rect2i(Vector2i.ZERO, Vector2.ONE * 128), Vector2i.ZERO)
 	
 	var atlas_texture= ImageTexture.create_from_image(image)

@@ -80,3 +80,6 @@ func load_custom_data(_data: Dictionary):
 
 func is_key_handled_customly(_key: String)-> bool:
 	return false
+
+func get_display_name()-> String:
+	return name.capitalize()
