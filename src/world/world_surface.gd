@@ -9,12 +9,13 @@ var tiles: Array2D
 
 var units: Array[Unit]
 
+var world: World
 
-func _init(_name: String, _width: int, _height: int):
+func _init(_name: String, _width: int, _height: int, _world: World):
 	name= _name
 	width= _width
 	height= _height
-
+	world= _world
 
 func generate_default_tiles():
 	assert(not GameData.terrains.is_empty())

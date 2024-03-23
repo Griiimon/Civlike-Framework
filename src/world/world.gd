@@ -6,9 +6,11 @@ class_name World
 
 var surfaces: Array[WorldSurface]
 
+var diplomacy: Diplomacy= Diplomacy.new()
+
 
 func init():
-	surfaces.append(WorldSurface.new("default", width, height))
+	surfaces.append(WorldSurface.new("default", width, height, self))
 	
 func tick():
 	pass

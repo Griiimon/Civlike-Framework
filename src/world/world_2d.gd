@@ -4,6 +4,7 @@ class_name MyWorld2D
 @onready var tilemap = $TileMap
 
 
+
 func init():
 	super()
 	create_tileset()

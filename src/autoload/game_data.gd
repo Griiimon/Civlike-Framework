@@ -11,6 +11,8 @@ var units: Array[UnitData]
 
 var techs: Array[TechData]
 
+
+
 var terrain_types_dict:= {}
 var unit_tags_dict:= {}
 var techs_dict:= {}
