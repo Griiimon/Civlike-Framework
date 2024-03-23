@@ -12,4 +12,6 @@ func _ready():
 	late_ready.call_deferred()
 
 func late_ready():
-	world.generate_flat()
+	#world.generate_flat()
+	world.generate()
+	world.render()

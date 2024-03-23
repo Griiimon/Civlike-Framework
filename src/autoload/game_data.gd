@@ -3,6 +3,10 @@ extends Node
 var assets_dir: String
 var data_dir: String
 
+var game_settings: Dictionary
+var rules: Dictionary
+var world_settings: Dictionary
+
 var terrain_types: Array[TerrainTypeData]
 var terrains: Array[TerrainData]
 
@@ -14,6 +18,7 @@ var techs: Array[TechData]
 
 
 var terrain_types_dict:= {}
+var terrains_dict:= {}
 var unit_tags_dict:= {}
 var techs_dict:= {}
 
@@ -21,13 +26,18 @@ func load_data(game_dir: String):
 	game_dir= ProjectSettings.globalize_path(game_dir)
 	assets_dir= game_dir + "/assets/"
 	data_dir= game_dir + "/data/"
-	prints("Assets", assets_dir)
-	prints("Data", data_dir)
+	
+	prints("Assets folder", assets_dir)
+	prints("Data folder", data_dir)
+
+	game_settings= BaseGameData.parse_json(data_dir + "game/settings.json") 
+	world_settings= BaseGameData.parse_json(data_dir + "game/default_world_settings.json") 
 	
 	terrain_types.assign(BaseGameData.parse_data_folder(data_dir + "terrain/types", TerrainTypeData.new().get_script()))
 	build_data_dict(terrain_types_dict, terrain_types)
 	
 	terrains.assign(BaseGameData.parse_data_folder(data_dir + "terrain", TerrainData.new().get_script()))
+	build_data_dict(terrains_dict, terrains)
 	
 	
 	
