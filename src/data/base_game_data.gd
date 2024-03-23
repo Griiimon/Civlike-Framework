@@ -44,7 +44,7 @@ static func create_obj_from_json(unique_name: String, file_path: String, script:
 	if json_result == null:
 		return null
 	
-	var data: Dictionary= default_data
+	var data: Dictionary= default_data.duplicate()
 	data.merge(json_result, true)
 	
 	print(data)
@@ -54,13 +54,6 @@ static func create_obj_from_json(unique_name: String, file_path: String, script:
 	
 	obj.name= unique_name
 	obj.raw_data= data
-	
-	for key in data.keys():
-		if key in obj:
-			if not obj.is_key_handled_customly(key):
-				obj.set(key, data[key])
-	
-	obj.load_custom_data(data)
 	
 	return  obj
 
@@ -73,7 +66,21 @@ static func parse_json(file_path: String):
 		return null
 
 	assert(json.data is Dictionary)
+	
+	print(json.data)
+	print()
+	
 	return json.data
+
+
+func parse_data():
+	for key in raw_data.keys():
+		if key in self:
+			if not is_key_handled_customly(key):
+				set(key, raw_data[key])
+	
+	load_custom_data(raw_data)
+
 
 func load_custom_data(_data: Dictionary):
 	pass

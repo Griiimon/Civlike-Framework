@@ -40,6 +40,21 @@ func load_data(game_dir: String):
 	build_data_dict(techs_dict, techs)
 
 
+	parse_data()
+
+func parse_data():
+	parse_array_data(terrain_types)
+	parse_array_data(terrains)
+	parse_array_data(unit_tags)
+	parse_array_data(units)
+	parse_array_data(techs)
+
+
+func parse_array_data(array: Array):
+	for item in array:
+		assert(item is BaseGameData)
+		item.parse_data()
+
 func build_data_dict(target_dictionary: Dictionary, source_array: Array):
 	for item in source_array:
 		assert(item is BaseGameData)
