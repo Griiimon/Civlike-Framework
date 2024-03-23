@@ -1,8 +1,5 @@
 {
 	"render": "2d",
 	"tilemap": "square",
-	"unit_stacking": true,
-	"incremental_tech_cost": true,
-	"save_individual_tech_progress": false,
-	"only_one_multi_stack_per_tile": false
+	"skip_lobby": true
 }

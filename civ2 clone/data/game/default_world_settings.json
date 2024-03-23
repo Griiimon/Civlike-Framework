@@ -1,0 +1,13 @@
+{
+	"width": 20,
+	"height": 20,
+	"generator": {
+		"type": "fill",
+		"parameters": {
+			"background": "ocean",
+			"foreground": "grassland",
+			"shape": "box",
+			"size": 16
+			}
+	}
+}
