@@ -9,10 +9,11 @@ var terrains: Array[TerrainData]
 var unit_tags: Array[UnitTagData]
 var units: Array[UnitData]
 
+var techs: Array[TechData]
 
 var terrain_types_dict:= {}
 var unit_tags_dict:= {}
-
+var techs_dict:= {}
 
 func load_data(game_dir: String):
 	game_dir= ProjectSettings.globalize_path(game_dir)
@@ -32,6 +33,10 @@ func load_data(game_dir: String):
 	build_data_dict(unit_tags_dict, unit_tags)
 	
 	units.assign(UnitData.parse_data_folder(data_dir + "units", UnitData.new().get_script()))
+
+	techs.assign(BaseGameData.parse_data_folder(data_dir + "techs", TechData.new().get_script()))
+	build_data_dict(techs_dict, techs)
+
 
 func build_data_dict(target_dictionary: Dictionary, source_array: Array):
 	for item in source_array:
