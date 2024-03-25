@@ -20,6 +20,7 @@ var techs: Array[TechData]
 var terrain_types_dict:= {}
 var terrains_dict:= {}
 var unit_tags_dict:= {}
+var units_dict:= {}
 var techs_dict:= {}
 
 func load_data(game_dir: String):
@@ -45,12 +46,14 @@ func load_data(game_dir: String):
 	build_data_dict(unit_tags_dict, unit_tags)
 	
 	units.assign(UnitData.parse_data_folder(data_dir + "units", UnitData.new().get_script()))
+	build_data_dict(units_dict, units)
 
 	techs.assign(BaseGameData.parse_data_folder(data_dir + "techs", TechData.new().get_script()))
 	build_data_dict(techs_dict, techs)
 
 
 	parse_data()
+	
 
 func parse_data():
 	parse_array_data(terrain_types)
