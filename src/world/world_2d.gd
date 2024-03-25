@@ -1,7 +1,7 @@
 extends World
 class_name MyWorld2D
 
-@onready var tilemap = $TileMap
+@onready var tilemap: TileMap = $TileMap
 
 
 
