@@ -4,6 +4,12 @@ class_name World
 @export var width: int= 20
 @export var height: int= 20
 
+
+@export var map_unit_scene: PackedScene
+
+@onready var units: Node = $Units
+
+
 var surfaces: Array[WorldSurface]
 
 var diplomacy: Diplomacy= Diplomacy.new()
@@ -33,6 +39,15 @@ func generate_flat():
 		get_main_surface().generate_default_tiles()
 	
 	render_surface(get_main_surface())
+
+func add_stack_to_map(_unit_stack: UnitStack)-> MapUnitStack:
+	assert(_unit_stack)
+	var map_obj: MapUnitStack= map_unit_scene.instantiate()
+	# TODO per faction sub node
+	units.add_child(map_obj)
+	map_obj.init(_unit_stack)
+
+	return map_obj
 
 func render():
 	render_surface(get_main_surface())
