@@ -1,23 +1,31 @@
 class_name UnitStack
 
 
-var coords: Vector2i
+var pos: Vector2i
 var units: Array[Unit]
 var surface: WorldSurface
 var faction: Faction
 
+var map_object: MapUnitStack
 
-func can_move_direction(dir: Vector2i)-> bool:
-	return can_move_to(coords + dir)
 
-func can_move_to(target_pos: Vector2i)-> bool:
-	var terrain: TerrainData= surface.get_terrain_at(target_pos)
+func _init(_surface: WorldSurface, _pos: Vector2i, _faction: Faction):
+	surface= _surface
+	pos= _pos
+	faction= _faction
 	
-	for unit in units:
-		if not unit.can_enter_terrain(terrain): 
-			return false
 	
-	var other_stacks: Array[UnitStack]= surface.get_unit_stacks_at(target_pos)
+func add_unit(_unit: Unit):
+	units.append(_unit)
+
+func can_move_direction(_dir: Vector2i)-> bool:
+	return can_move_to(pos + _dir)
+
+func can_move_to(_target_pos: Vector2i)-> bool:
+	if not can_stand_on(_target_pos):
+		return false
+	
+	var other_stacks: Array[UnitStack]= surface.get_unit_stacks_at(_target_pos)
 	
 	for other_stack in other_stacks:
 		if surface.world.diplomacy.are_faction_enemies(faction, other_stack.faction):
@@ -25,3 +33,28 @@ func can_move_to(target_pos: Vector2i)-> bool:
 
 		
 	return true
+
+
+func can_stand_on(_target_pos: Vector2i)-> bool:
+	var terrain: TerrainData= surface.get_terrain_at(_target_pos)
+
+	for unit in units:
+		if not unit.can_enter_terrain(terrain): 
+			return false
+	return true
+
+func move(_dir: Vector2i):
+	pos+= _dir
+	
+	update_position()
+
+func update_position():
+	if  map_object:
+		map_object.update_position()
+
+func get_first_display_unit()-> Unit:
+	return units[0]
+
+
+func get_world()-> World:
+	return surface.world
