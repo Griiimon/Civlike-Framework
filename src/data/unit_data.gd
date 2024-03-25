@@ -7,7 +7,6 @@ var icon: Texture2D
 var texture: Texture2D
 
 var movement: int
-var strength: int
 var tags: Array[UnitTagData]
 
 func load_custom_data(_data: Dictionary):
