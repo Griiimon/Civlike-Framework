@@ -24,6 +24,9 @@ func on_select():
 	
 	selected= true
 	
+	(get_parent() as PlayerUnitsManager).select_unit(self)
+	
+	
 
 func on_deselect():
 	if not selected: return
@@ -32,6 +35,7 @@ func on_deselect():
 		stop_blinking()
 
 	selected= false
+
 
 func start_blinking():
 	pass
