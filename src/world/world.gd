@@ -41,6 +41,17 @@ func generate_flat():
 	
 	render_surface(get_main_surface())
 
+
+func spawn_unit(_unit_data: UnitData, _pos: Vector2i, _faction: Faction, _surface: WorldSurface= null)-> UnitStack:
+	if not _surface:
+		_surface= get_main_surface()
+		
+	var unit_stack:= _surface.spawn_unit(_unit_data, _pos, _faction)
+	add_stack_to_map(unit_stack)
+	
+	return unit_stack
+
+
 func add_stack_to_map(_unit_stack: UnitStack)-> MapUnitStack:
 	assert(_unit_stack)
 	var map_obj: MapUnitStack= map_unit_scene.instantiate()
