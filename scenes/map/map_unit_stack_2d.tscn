@@ -9,9 +9,11 @@ size = Vector2(128, 128)
 script = ExtResource("1_uifig")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+centered = false
 
 [node name="Area2D" type="Area2D" parent="Sprite2D"]
 unique_name_in_owner = true
+position = Vector2(64, 64)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/Area2D"]
 unique_name_in_owner = true

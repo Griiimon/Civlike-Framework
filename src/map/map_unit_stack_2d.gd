@@ -7,7 +7,8 @@ class_name MapUnitStack2D
 
 
 func _ready():
-	collision_shape.shape.size= Vector2.ONE * Consts.TILE_SIZE / 2
+	area.position= Vector2.ONE * Consts.TILE_SIZE / 2
+	collision_shape.shape.size= Vector2.ONE * Consts.TILE_SIZE
 
 func init(_unit_stack: UnitStack):
 	super(_unit_stack)
