@@ -8,6 +8,7 @@ class_name World
 @export var map_unit_scene: PackedScene
 
 @onready var units: Node = $Units
+@onready var player_units: PlayerUnitsManager = $Units/Player
 
 
 var surfaces: Array[WorldSurface]

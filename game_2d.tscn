@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cruw07o3gci0d"]
+[gd_scene load_steps=9 format=3 uid="uid://cruw07o3gci0d"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_0bwo1"]
 [ext_resource type="Script" path="res://src/world/world_2d.gd" id="2_74h38"]
 [ext_resource type="PackedScene" uid="uid://befccflchtlaq" path="res://scenes/map/map_unit_stack_2d.tscn" id="3_0hgra"]
 [ext_resource type="Script" path="res://src/test_runner.gd" id="3_3fnst"]
+[ext_resource type="Script" path="res://src/player_units_manager.gd" id="4_43g8m"]
 [ext_resource type="Script" path="res://tests/unit_terrain_test.gd" id="4_r4qut"]
 [ext_resource type="Script" path="res://tests/unit_move_test.gd" id="5_8mtc1"]
 
@@ -26,6 +27,7 @@ layer_0/name = "Terrain"
 [node name="Units" type="Node" parent="World"]
 
 [node name="Player" type="Node" parent="World/Units"]
+script = ExtResource("4_43g8m")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
