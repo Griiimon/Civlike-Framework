@@ -19,7 +19,7 @@ func generate_flat():
 			var tile: FlatTile= flat_tile_scene.instantiate()
 			tile.position= Vector3(x, 0, y)
 			flat_map.add_child(tile)
-			tile.set_material(tiles.read(x, y).flat_material)
+			tile.set_material(get_main_surface().tiles.read(x, y).flat_material)
 	
 	generate_grid()
 
