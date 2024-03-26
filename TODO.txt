@@ -4,5 +4,6 @@ lua add civ2 shield with faction color and hitpoints
 
 make tile size json config
 
+1 game scene that instatiates either 2d or 3d world and camera scene
 
 mod data parsing ( unzip, create order from dependencies )
