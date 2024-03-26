@@ -1,1 +1,8 @@
+human player faction
+unit blink when selected setting
+lua add civ2 shield with faction color and hitpoints
+
+make tile size json config
+
+
 mod data parsing ( unzip, create order from dependencies )
