@@ -22,6 +22,9 @@ func can_move_direction(_dir: Vector2i)-> bool:
 	return can_move_to(pos + _dir)
 
 func can_move_to(_target_pos: Vector2i)-> bool:
+	if not surface.tiles.is_in_boundsv(_target_pos):
+		return false
+	
 	if not can_stand_on(_target_pos):
 		return false
 	
