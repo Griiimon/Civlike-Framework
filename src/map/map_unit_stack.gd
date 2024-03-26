@@ -24,9 +24,11 @@ func on_select():
 	
 	selected= true
 	
-	(get_parent() as PlayerUnitsManager).select_unit(self)
+	get_player_units_manager().select_unit(self)
 	
-	
+
+func get_player_units_manager()-> PlayerUnitsManager:
+	return get_parent()
 
 func on_deselect():
 	if not selected: return
