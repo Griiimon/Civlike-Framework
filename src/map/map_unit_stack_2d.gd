@@ -20,8 +20,8 @@ func set_position():
 	sprite.global_position= world.tilemap.to_local(units.pos * Consts.TILE_SIZE)
 
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
+func _on_area_2d_input_event(_viewport, _event, _shape_idx):
+	if _event is InputEventMouseButton:
 		on_select()
 
 func start_blinking():

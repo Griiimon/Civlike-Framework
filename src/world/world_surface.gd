@@ -34,7 +34,7 @@ func spawn_unit(_unit_data: UnitData, _pos: Vector2i, faction: Faction)-> UnitSt
 	return unit_stack
 
 func get_unit_stacks_at(_target_pos)-> Array[UnitStack]:
-	var result: Array[UnitStack]
+	var result: Array[UnitStack]= []
 	
 	for stack in unit_stacks:
 		if stack.pos == _target_pos:
