@@ -16,8 +16,8 @@ func late_ready():
 	world.generate()
 	world.render()
 
-func _physics_process(delta):
-	var move: Vector2i
+func _physics_process(_delta: float):
+	var move:= Vector2i.ZERO
 	
 	if Input.is_action_just_pressed("move_up"):
 		move.y= -1
