@@ -15,3 +15,30 @@ func late_ready():
 	#world.generate_flat()
 	world.generate()
 	world.render()
+
+func _physics_process(delta):
+	var move: Vector2i
+	
+	if Input.is_action_just_pressed("move_up"):
+		move.y= -1
+	elif Input.is_action_just_pressed("move_up_right"):
+		move.x= 1
+		move.y= -1
+	elif Input.is_action_just_pressed("move_right"):
+		move.x= 1
+	elif Input.is_action_just_pressed("move_down_right"):
+		move.x= 1
+		move.y= 1
+	elif Input.is_action_just_pressed("move_down"):
+		move.y= 1
+	elif Input.is_action_just_pressed("move_down_left"):
+		move.x= -1
+		move.y= 1
+	elif Input.is_action_just_pressed("move_left"):
+		move.x= -1
+	elif Input.is_action_just_pressed("move_up_left"):
+		move.x= -1
+		move.y= -1
+
+	if move:
+		world.player_units.send_command(PlayerUnitsManager.Command.MOVE, move)
