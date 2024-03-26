@@ -6,4 +6,7 @@ make tile size json config
 
 1 game scene that instatiates either 2d or 3d world and camera scene
 
+map unit structure:
+	Units-> Faction-> Surface-> 
+
 mod data parsing ( unzip, create order from dependencies )
