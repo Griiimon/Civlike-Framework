@@ -1,10 +1,12 @@
 
 
 static func run(_world: World, _game: Game):
-	var faction= Faction.new()
-	Diplomacy.add_faction(faction)
+	var faction= Diplomacy.get_player_faction()
 	
-	var stack: UnitStack= _world.get_main_surface().spawn_unit(GameData.units_dict["settler"], Vector2i(1, 1), faction)
+	#var stack: UnitStack= _world.get_main_surface().spawn_unit(GameData.units_dict["settler"], Vector2i(1, 1), faction)
+	#_world.add_stack_to_map(stack)
+
+	var stack: UnitStack= _world.spawn_unit(GameData.units_dict["settler"], Vector2i(1, 1), faction)
 	_world.add_stack_to_map(stack)
 	
 	_world.render()
@@ -13,5 +15,3 @@ static func run(_world: World, _game: Game):
 
 	stack.move(dir)
 	
-
-	Diplomacy.remove_faction(faction)
