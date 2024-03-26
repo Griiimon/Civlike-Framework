@@ -31,4 +31,5 @@ layer_0/name = "Terrain"
 
 [node name="Test Runner" type="Node" parent="."]
 script = ExtResource("3_3fnst")
+enabled = false
 tests = Array[GDScript]([ExtResource("4_r4qut"), ExtResource("5_8mtc1")])

@@ -38,7 +38,7 @@ static func parse_data_folder(path: String, script: Script, default: String= "")
 	return result
 
 
-static func create_obj_from_json(unique_name: String, file_path: String, script: Script, default_data: Dictionary):
+static func create_obj_from_json(unique_name: String, file_path: String, script: Script, default_data: Dictionary= {}):
 	var json_result= parse_json(file_path)
 	
 	if json_result == null:

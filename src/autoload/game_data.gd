@@ -6,6 +6,8 @@ var data_dir: String
 var game_settings: Dictionary
 var rules: Dictionary
 var world_settings: Dictionary
+var appearance: AppearanceData
+
 
 var terrain_types: Array[TerrainTypeData]
 var terrains: Array[TerrainData]
@@ -33,6 +35,10 @@ func load_data(game_dir: String):
 
 	game_settings= BaseGameData.parse_json(data_dir + "game/settings.json") 
 	world_settings= BaseGameData.parse_json(data_dir + "game/default_world_settings.json") 
+	
+	appearance= BaseGameData.create_obj_from_json("Appearance", data_dir + "game/appearance.json", AppearanceData.new().get_script())
+	appearance.parse_data()
+	assert(appearance.selected_unit_blinks)
 	
 	terrain_types.assign(BaseGameData.parse_data_folder(data_dir + "terrain/types", TerrainTypeData.new().get_script()))
 	build_data_dict(terrain_types_dict, terrain_types)
