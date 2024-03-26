@@ -17,7 +17,9 @@ var diplomacy: Diplomacy= Diplomacy.new()
 
 
 func init():
-	surfaces.append(WorldSurface.new("default", width, height, self))
+	add_surface("default", width, height)
+	
+	create_unit_tree()
 	
 func tick():
 	pass
@@ -55,11 +57,26 @@ func spawn_unit(_unit_data: UnitData, _pos: Vector2i, _faction: Faction, _surfac
 func add_stack_to_map(_unit_stack: UnitStack)-> MapUnitStack:
 	assert(_unit_stack)
 	var map_obj: MapUnitStack= map_unit_scene.instantiate()
-	# TODO per faction sub node
-	units.add_child(map_obj)
+	
+	var faction_node= units.get_node_or_null(_unit_stack.faction.name)
+	assert(faction_node)
+	var surface_node= faction_node.get_node_or_null(_unit_stack.surface.name)
+	assert(surface_node)
+	
+	surface_node.add_child(map_obj)
 	map_obj.init(_unit_stack)
 
 	return map_obj
+
+func create_unit_tree():
+	for surface in surfaces:
+		var surface_node: Node= Node.new()
+		surface_node.name= surface.name
+		player_units.add_child(surface_node)
+
+func add_surface(_name: String, _width: int, _height: int):
+	surfaces.append(WorldSurface.new(_name, _width, _height, self))
+
 
 func render():
 	render_surface(get_main_surface())
