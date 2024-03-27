@@ -1,3 +1,4 @@
+extends ExtendableGameObject
 class_name Unit
 
 var unit_data: UnitData

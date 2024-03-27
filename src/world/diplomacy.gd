@@ -1,3 +1,4 @@
+extends ExtendableGameObject
 class_name Diplomacy
 
 const ENEMY_THRESHOLD= -50

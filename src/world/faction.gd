@@ -1,3 +1,4 @@
+extends ExtendableGameObject
 class_name Faction
 
 var name: String
