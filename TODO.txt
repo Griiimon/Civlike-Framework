@@ -2,6 +2,8 @@ add ext_data {} to all moddable scripts and Global.register_var(obj, "var")
 all these scripts need to inherit ExtendableObject, otherwise it will get messy
 but what about scripts that inherit already ( that would be only Node types? )
 
+surfaces.tiles of type SurfaceTile instead of TerrainData !
+
 make tests non-static and add test_success()
 
 lua add civ2 shield with faction color and hitpoints
