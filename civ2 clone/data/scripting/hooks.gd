@@ -29,6 +29,7 @@ static func set_hook(_type: Type, _function: String, _parameters: Array, _defaul
 					assert(obj)
 					return obj.callv(_function, _parameters)
 
+	return _default_return
 
 static func register(_type: Type, _script_type: ScriptType, _script_path: String, _functions: Array[String]):
 	assert(not registered_hooks.has(_type))
