@@ -25,7 +25,10 @@ func can_move()-> bool:
 	for unit in units:
 		if not unit.has_moves_left():
 			return false
-	return true
+	
+	return Hooks.set_hook(Hooks.Type.UNIT_STACK, "can_move", [ self ], true)
+	
+	#return true
 
 func can_move_to(_target_pos: Vector2i)-> bool:
 	if not surface.tiles.is_in_boundsv(_target_pos):
