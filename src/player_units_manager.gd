@@ -12,7 +12,7 @@ func send_command(_cmd: Command, _parameter):
 				assert(_parameter is Vector2i and _parameter.length_squared() == 1)
 				var dir: Vector2i= _parameter
 				var unit: UnitStack= selected_unit.units
-				if unit.can_move_direction(dir):
+				if unit.can_move() and unit.can_move_direction(dir):
 					unit.move(dir)
 
 

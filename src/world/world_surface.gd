@@ -45,5 +45,8 @@ func get_unit_stacks_at(_target_pos)-> Array[UnitStack]:
 func get_terrain_at(_pos: Vector2i)-> TerrainData:
 	return tiles.readv(_pos)
 
+func get_move_cost(_pos: Vector2i)-> int:
+	return get_terrain_at(_pos).move_cost
+
 func is_empty()-> bool:
 	return not tiles

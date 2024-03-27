@@ -3,7 +3,7 @@ class_name TerrainData
 
 
 var type: TerrainTypeData 
-var move_cost: float
+var move_cost: int
 var model: Node3D
 var flat_texture: Texture2D
 var flat_material: StandardMaterial3D

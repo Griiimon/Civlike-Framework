@@ -21,6 +21,12 @@ func add_unit(_unit: Unit):
 func can_move_direction(_dir: Vector2i)-> bool:
 	return can_move_to(pos + _dir)
 
+func can_move()-> bool:
+	for unit in units:
+		if not unit.has_moves_left():
+			return false
+	return true
+
 func can_move_to(_target_pos: Vector2i)-> bool:
 	if not surface.tiles.is_in_boundsv(_target_pos):
 		return false
@@ -48,6 +54,11 @@ func can_stand_on(_target_pos: Vector2i)-> bool:
 
 func move(_dir: Vector2i):
 	pos+= _dir
+	
+	var move_cost: int= surface.get_move_cost(pos)
+	
+	for unit in units:
+		unit.moves_left= max(0, unit.moves_left - move_cost)
 	
 	update_position()
 
