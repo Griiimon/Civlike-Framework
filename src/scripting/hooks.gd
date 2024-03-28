@@ -22,12 +22,19 @@ static func set_hook(_type: Type, _function: String, _parameters: Array, _defaul
 		var item: Item= registered_hooks[_type]
 		if _function in item.functions:
 			match item.script_type:
+
 				ScriptType.GDSCRIPT:
 					var script: GDScript= load(item.script_path)
 					assert(script)
 					var obj: Object= script.new()
 					assert(obj)
 					return obj.callv(_function, _parameters)
+
+				ScriptType.LUA:
+					var lua: LuaAPI = LuaAPI.new()
+					lua.bind_libraries(["base"])
+					lua.do_file(item.script_path)
+					return lua.call_function(_function, _parameters)
 
 	return _default_return
 
