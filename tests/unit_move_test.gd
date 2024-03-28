@@ -10,7 +10,7 @@ static func run(_world: World, _game: Game):
 	
 	_world.render()
 	var dir:= Vector2i(1, 0)
-	assert(stack.can_move() and stack.can_move_direction(dir))
+	assert(stack.can_move() and stack.can_move_direction(dir), str(stack.get_var("pumbaa")))
 
 	stack.move(dir)
 	
