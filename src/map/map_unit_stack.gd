@@ -26,6 +26,9 @@ func on_select():
 	
 	get_player_units_manager().select_unit(self)
 	
+func report_turn_finished():
+	get_player_units_manager().report_turn_finished(self)
+
 
 func get_player_units_manager()-> PlayerUnitsManager:
 	return get_parent().get_parent()

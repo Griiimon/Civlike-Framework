@@ -66,6 +66,9 @@ func move(_dir: Vector2i):
 	
 	update_position()
 
+	if not can_move():
+		map_object.report_turn_finished()
+
 func update_position():
 	if  map_object:
 		map_object.update_position()
