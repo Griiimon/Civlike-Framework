@@ -86,3 +86,18 @@ func render_surface(_surface: WorldSurface):
 
 func get_main_surface()-> WorldSurface:
 	return surfaces[0]
+
+func get_surface(_name: String)-> WorldSurface:
+	for surface in surfaces:
+		if surface.name == _name:
+			return surface
+	assert(false)
+	return null
+
+func get_surface_node(_faction_node_name: String, _surface_name: String)-> Node:
+	var faction_node= units.get_node_or_null(_faction_node_name)
+	assert(faction_node)
+	var surface: WorldSurface= get_surface(_surface_name)
+	var surface_node: Node= faction_node.get_node_or_null(surface.name)
+	assert(surface_node)
+	return null

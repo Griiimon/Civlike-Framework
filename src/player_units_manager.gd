@@ -10,6 +10,8 @@ var selected_unit: MapUnitStack
 
 var skip_list: Array[MapUnitStack]
 
+var current_surface: WorldSurface
+
 func send_command(_cmd: Command, _parameter):
 	match _cmd:
 		Command.MOVE:
@@ -44,8 +46,10 @@ func deselect():
 		selected_unit.on_deselect()
 	
 
-func select_next_unit():
-	if skip_list.size() == get_child_count():
+func select_next_surface_unit(_surface: WorldSurface):
+	var surface_node: Node= get_world().get_surface_node("Player", _surface.name)
+	
+	if skip_list.size() == surface_node.get_child_count():
 		deselect()
 		
 		all_units_done.emit()
@@ -53,17 +57,17 @@ func select_next_unit():
 	
 	var target_unit: MapUnitStack
 	if not selected_unit:
-		if get_child_count() > 0:
-			target_unit= get_child(0)
+		if surface_node.get_child_count() > 0:
+			target_unit= surface_node.get_child(0)
 	else:
-		if get_child_count() > 1:
-			target_unit= get_next_unit(target_unit)
+		if surface_node.get_child_count() > 1:
+			target_unit= surface_node.get_next_unit(target_unit)
 	
 	if target_unit in skip_list:
 		var find_unit: MapUnitStack
 		
 		while true:
-			find_unit= get_next_unit(find_unit)
+			find_unit= surface_node.get_next_unit(find_unit)
 			if find_unit == target_unit:
 				all_units_done.emit()
 				return
@@ -75,5 +79,8 @@ func select_next_unit():
 	select_unit(target_unit)
 
 
-func get_next_unit(_from: MapUnitStack)-> MapUnitStack:
-	return get_child(wrapi(_from.get_index() + 1, 0, get_child_count()))
+func get_next_unit(_surface_node: Node, _from: MapUnitStack)-> MapUnitStack:
+	return _surface_node.get_child(wrapi(_from.get_index() + 1, 0, get_child_count()))
+
+func get_world()-> World:
+	return get_parent().get_parent()
