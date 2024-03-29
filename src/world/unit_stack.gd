@@ -73,9 +73,12 @@ func update_position():
 	if  map_object:
 		map_object.update_position()
 
+func reset_moves():
+	for unit in units:
+		unit.reset_moves()
+
 func get_first_display_unit()-> Unit:
 	return units[0]
-
 
 func get_world()-> World:
 	return surface.world

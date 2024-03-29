@@ -25,13 +25,19 @@ func send_command(_cmd: Command, _parameter):
 func reset(_surface: WorldSurface):
 	skip_list.clear()
 	current_surface= _surface
+	
+	for surface_node in get_children():
+		for map_unit_stack in surface_node.get_children():
+			assert(map_unit_stack is MapUnitStack)
+			map_unit_stack.units.reset_moves()
 
 func report_turn_finished(_unit: MapUnitStack):
-	
 	skip_list.append(_unit)
 	
 	if _unit == selected_unit:
 		select_next_surface_unit(current_surface)
+	else:
+		assert(false)
 
 func select_unit(_unit: MapUnitStack):
 	if selected_unit == _unit: return
