@@ -22,15 +22,16 @@ func send_command(_cmd: Command, _parameter):
 				if unit.can_move() and unit.can_move_direction(dir):
 					unit.move(dir)
 
-func reset():
+func reset(_surface: WorldSurface):
 	skip_list.clear()
+	current_surface= _surface
 
 func report_turn_finished(_unit: MapUnitStack):
 	
 	skip_list.append(_unit)
 	
 	if _unit == selected_unit:
-		select_next_unit()
+		select_next_surface_unit(current_surface)
 
 func select_unit(_unit: MapUnitStack):
 	if selected_unit == _unit: return
@@ -42,12 +43,17 @@ func select_unit(_unit: MapUnitStack):
 
 func deselect():
 	if selected_unit:
-		selected_unit= null
 		selected_unit.on_deselect()
+		selected_unit= null
 	
 
-func select_next_surface_unit(_surface: WorldSurface):
+func select_next_surface_unit(_surface: WorldSurface= null):
+	if not _surface:
+		assert(current_surface)
+		_surface= current_surface
+	
 	var surface_node: Node= get_world().get_surface_node("Player", _surface.name)
+	assert(surface_node)
 	
 	if skip_list.size() == surface_node.get_child_count():
 		deselect()

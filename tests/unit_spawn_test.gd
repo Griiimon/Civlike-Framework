@@ -3,7 +3,7 @@
 static func run(_world: World, _game: Game):
 	var faction= Diplomacy.get_player_faction()
 	
-	var stack: UnitStack= _world.spawn_unit(GameData.units_dict["settler"], Vector2i(1, 1), faction)
+	_world.spawn_unit(GameData.units_dict["settler"], Vector2i(1, 1), faction)
 	
 	_world.render()
 	

@@ -100,4 +100,4 @@ func get_surface_node(_faction_node_name: String, _surface_name: String)-> Node:
 	var surface: WorldSurface= get_surface(_surface_name)
 	var surface_node: Node= faction_node.get_node_or_null(surface.name)
 	assert(surface_node)
-	return null
+	return surface_node

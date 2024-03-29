@@ -53,8 +53,8 @@ func _on_player_all_units_done():
 
 func start_turn():
 	print("New Turn")
-	player_units.reset()
-	player_units.select_next_unit()
+	player_units.reset(world.get_main_surface())
+	player_units.select_next_surface_unit()
 
 func end_turn():
 	start_turn()
