@@ -2,7 +2,7 @@ extends Node
 class_name PlayerUnitsManager
 
 signal all_units_done
-
+signal unit_selected
 
 enum Command { MOVE, WAIT, SKIP, END_TURN }
 
@@ -46,6 +46,8 @@ func select_unit(_unit: MapUnitStack):
 	
 	selected_unit= _unit
 	selected_unit.on_select()
+
+	unit_selected.emit(selected_unit)
 
 func deselect():
 	if selected_unit:

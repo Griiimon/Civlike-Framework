@@ -19,6 +19,9 @@ func set_position():
 	var world: MyWorld2D= units.get_world() as MyWorld2D
 	sprite.global_position= world.tilemap.to_local(units.pos * Consts.TILE_SIZE)
 
+func get_position()-> Vector2:
+	return sprite.global_position
+
 
 func _on_area_2d_input_event(_viewport, _event, _shape_idx):
 	if _event is InputEventMouseButton:

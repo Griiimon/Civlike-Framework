@@ -2,6 +2,7 @@ extends World
 class_name MyWorld2D
 
 @onready var tilemap: TileMap = $TileMap
+@onready var camera: Camera2D = $Camera2D
 
 
 
@@ -45,3 +46,13 @@ func create_tileset():
 	tile_set.add_source(atlas_source)
 
 
+func focus_camera_on_unit(_unit: MapUnitStack):
+	var unit2d: MapUnitStack2D= _unit
+	
+	camera.position= unit2d.get_position()
+	
+
+
+func _on_unit_selected(_unit: MapUnitStack):
+	focus_camera_on_unit(_unit)
+	

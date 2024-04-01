@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cruw07o3gci0d"]
+[gd_scene load_steps=12 format=3 uid="uid://cruw07o3gci0d"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_0bwo1"]
 [ext_resource type="Script" path="res://src/world/world_2d.gd" id="2_74h38"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://src/player_units_manager.gd" id="4_43g8m"]
 [ext_resource type="Script" path="res://tests/unit_terrain_test.gd" id="4_r4qut"]
 [ext_resource type="Script" path="res://tests/unit_move_test.gd" id="5_8mtc1"]
+[ext_resource type="Script" path="res://map_camera_2d.gd" id="5_vrcva"]
 [ext_resource type="Script" path="res://tests/register_hook_test.gd" id="6_xau3h"]
 [ext_resource type="Script" path="res://tests/unit_spawn_test.gd" id="9_fgvgy"]
 
@@ -25,13 +26,17 @@ map_unit_scene = ExtResource("3_0hgra")
 tile_set = SubResource("TileSet_81d4d")
 format = 2
 layer_0/name = "Terrain"
+layer_1/name = "Grid"
+layer_1/z_index = 10
+layer_1/tile_data = PackedInt32Array()
 
 [node name="Units" type="Node" parent="World"]
 
 [node name="Player" type="Node" parent="World/Units"]
 script = ExtResource("4_43g8m")
 
-[node name="Camera2D" type="Camera2D" parent="."]
+[node name="Camera2D" type="Camera2D" parent="World"]
+script = ExtResource("5_vrcva")
 
 [node name="Test Runner" type="Node" parent="."]
 script = ExtResource("3_3fnst")
@@ -43,3 +48,4 @@ script = ExtResource("3_3fnst")
 tests = Array[GDScript]([ExtResource("9_fgvgy")])
 
 [connection signal="all_units_done" from="World/Units/Player" to="." method="_on_player_all_units_done"]
+[connection signal="unit_selected" from="World/Units/Player" to="World" method="_on_unit_selected"]
