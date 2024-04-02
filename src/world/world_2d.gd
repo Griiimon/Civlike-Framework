@@ -10,6 +10,9 @@ func init():
 	super()
 	create_tileset()
 
+func _ready():
+	$SubViewport.world_2d= get_viewport().world_2d
+
 func render_surface(_surface: WorldSurface):
 	for x in _surface.width:
 		for y in _surface.height:
