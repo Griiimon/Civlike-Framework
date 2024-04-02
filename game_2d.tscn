@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cruw07o3gci0d"]
+[gd_scene load_steps=15 format=3 uid="uid://cruw07o3gci0d"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_0bwo1"]
 [ext_resource type="Script" path="res://src/world/world_2d.gd" id="2_74h38"]
@@ -13,6 +13,14 @@
 
 [sub_resource type="TileSet" id="TileSet_81d4d"]
 tile_size = Vector2i(128, 128)
+
+[sub_resource type="QuadMesh" id="QuadMesh_lrhvg"]
+size = Vector2(100, 100)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_p7b1r"]
+viewport_path = NodePath("World/SubViewport")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_hkmdu"]
 
 [node name="Game2D" type="Node"]
 script = ExtResource("1_0bwo1")
@@ -37,6 +45,29 @@ script = ExtResource("4_43g8m")
 
 [node name="Camera2D" type="Camera2D" parent="World"]
 script = ExtResource("5_vrcva")
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="World"]
+position = Vector2(-50, 50)
+mesh = SubResource("QuadMesh_lrhvg")
+texture = SubResource("ViewportTexture_p7b1r")
+
+[node name="SubViewport" type="SubViewport" parent="World"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(100, 100)
+
+[node name="Camera2D2" type="Camera2D" parent="World/SubViewport"]
+material = SubResource("CanvasItemMaterial_hkmdu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="World"]
+
+[node name="ColorRect" type="ColorRect" parent="World/CanvasLayer"]
+custom_minimum_size = Vector2(500, 500)
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+color = Color(1, 0.156863, 1, 1)
 
 [node name="Test Runner" type="Node" parent="."]
 script = ExtResource("3_3fnst")
