@@ -1,6 +1,11 @@
 extends World
 class_name MyWorld2D
 
+const TILEMAP_LAYER_MAIN_SURFACE= 0
+const TILEMAP_LAYER_GRID= 1
+
+const TILESET_SOURCE_GRID= 0
+
 @onready var tilemap: TileMap = $TileMap
 @onready var camera: Camera2D = $Camera2D
 
@@ -16,8 +21,9 @@ func _ready():
 func render_surface(_surface: WorldSurface):
 	for x in _surface.width:
 		for y in _surface.height:
-			var pos:= Vector2i(x, y)
-			tilemap.set_cell(0, pos, 0, _surface.tiles.readv(pos).atlas_index * Vector2(1, 0))
+			var tile:= Vector2i(x, y)
+			tilemap.set_cell(TILEMAP_LAYER_MAIN_SURFACE, tile, _surface.tileset_source, _surface.tiles.readv(tile).atlas_index * Vector2(1, 0))
+			tilemap.set_cell(TILEMAP_LAYER_GRID, tile, TILESET_SOURCE_GRID, Vector2i.ZERO)
 
 
 
@@ -34,7 +40,7 @@ func create_tileset():
 		assert(src.data.format == "RGB8")
 		image.blit_rect(src, src_rect, Vector2i(i, 0) * 128)
 	
-	#image.save_png("res://tileset.png")
+	image.save_png("res://tileset.png")
 	
 	var atlas_texture= ImageTexture.create_from_image(image)
 	var atlas_source= TileSetAtlasSource.new()

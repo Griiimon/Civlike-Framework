@@ -12,6 +12,8 @@ var unit_stacks: Array[UnitStack]
 
 var world: World
 
+var tileset_source: int= 1
+
 func _init(_name: String, _width: int, _height: int, _world: World):
 	name= _name
 	width= _width

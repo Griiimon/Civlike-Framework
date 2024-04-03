@@ -38,6 +38,7 @@ func generate():
 	
 
 func generate_flat():
+	assert(false)
 	if get_main_surface().is_empty():
 		get_main_surface().generate_default_tiles()
 	

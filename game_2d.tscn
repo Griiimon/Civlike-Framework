@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cruw07o3gci0d"]
+[gd_scene load_steps=17 format=3 uid="uid://cruw07o3gci0d"]
 
 [ext_resource type="Script" path="res://src/game.gd" id="1_0bwo1"]
 [ext_resource type="Script" path="res://src/world/world_2d.gd" id="2_74h38"]
@@ -6,13 +6,20 @@
 [ext_resource type="Script" path="res://src/test_runner.gd" id="3_3fnst"]
 [ext_resource type="Script" path="res://src/player_units_manager.gd" id="4_43g8m"]
 [ext_resource type="Script" path="res://tests/unit_terrain_test.gd" id="4_r4qut"]
+[ext_resource type="Texture2D" uid="uid://boe7o3jleeuqc" path="res://textures/grid.png" id="4_yuotj"]
 [ext_resource type="Script" path="res://tests/unit_move_test.gd" id="5_8mtc1"]
 [ext_resource type="Script" path="res://map_camera_2d.gd" id="5_vrcva"]
 [ext_resource type="Script" path="res://tests/register_hook_test.gd" id="6_xau3h"]
 [ext_resource type="Script" path="res://tests/unit_spawn_test.gd" id="9_fgvgy"]
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nraex"]
+texture = ExtResource("4_yuotj")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_81d4d"]
 tile_size = Vector2i(128, 128)
+sources/0 = SubResource("TileSetAtlasSource_nraex")
 
 [sub_resource type="QuadMesh" id="QuadMesh_lrhvg"]
 size = Vector2(1000, 1000)
@@ -34,8 +41,10 @@ map_unit_scene = ExtResource("3_0hgra")
 tile_set = SubResource("TileSet_81d4d")
 format = 2
 layer_0/name = "Terrain"
+layer_0/navigation_enabled = false
 layer_1/name = "Grid"
-layer_1/z_index = 10
+layer_1/z_index = 50
+layer_1/navigation_enabled = false
 layer_1/tile_data = PackedInt32Array()
 
 [node name="Units" type="Node" parent="World"]
