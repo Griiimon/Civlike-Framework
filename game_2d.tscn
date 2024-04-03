@@ -46,7 +46,8 @@ script = ExtResource("4_43g8m")
 [node name="Camera2D" type="Camera2D" parent="World"]
 script = ExtResource("5_vrcva")
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="World"]
+[node name="Left Wrap Quad" type="MeshInstance2D" parent="World"]
+visible = false
 position = Vector2(-500, 500)
 mesh = SubResource("QuadMesh_lrhvg")
 texture = SubResource("ViewportTexture_p7b1r")
